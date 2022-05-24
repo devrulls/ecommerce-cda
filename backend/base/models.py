@@ -74,3 +74,46 @@ class ShippingAdress(models.Model):
 
     def __str__(self):
         return str(self.address)
+
+
+class Images(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Recipes(models.Model):
+    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    image = models.ForeignKey(Images, on_delete=models.SET_NULL, null=True)
+    rec_difficulty = models.IntegerField(null=True, blank=True, default=1)
+    rec_statut = models.IntegerField(null=True, blank=True, default=1)
+    rec_duration = models.IntegerField(null=True, blank=True, default=0)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Paragraph(models.Model):
+    recipe = models.ForeignKey(Recipes, on_delete=models.SET_NULL, null=True)
+    paragraph_organisation = models.CharField(max_length=200, null=True, blank=True)
+    paragraph_content = models.IntegerField(null=True, blank=True, default=0)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.paragraph_content)
