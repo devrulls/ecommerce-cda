@@ -1,3 +1,24 @@
+:root {
+    --primaryColor: #00838F;
+    --primaryLightColor: #4FB3BF;
+    --primaryDarkColor: #005662;
+
+    --secondaryColor: #FBC02D;
+    --secondaryLightColor: #FFF263;
+    --secondaryDarkColor: #C49000;
+
+    --classicColorDark: #414141;
+    --classicColorGrey: #606267;
+    --classicColorLight: #ECECEC;
+    --classicColorWhite: #FFFFFF;
+
+    --colorButtonDisabled: #ececec;
+    --colorButtonInformation: #4FB3BF;
+    --colorButtonDanger: #fb3939;
+    --colorButtonAlert: #fac02e;
+    --colorButtonValidate: #b0d41c;
+}
+
 main{
     min-height: 80vh;
 }
