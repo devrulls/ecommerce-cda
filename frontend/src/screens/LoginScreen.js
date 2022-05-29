@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-// import {Product} from "../components/Product";
 import {Message} from "../components/Message";
 import {Loader} from "../components/Loader";
 import {login} from "../actions/userActions"
@@ -22,7 +21,6 @@ export const LoginScreen = () => {
     // const var_redirect = useParams.get('redirect') ? useParams.get('redirect') : '/';
     const var_redirect = useParams.get('redirect');
     const redirect = useLocation.search ? var_redirect : '/';
-    console.log(redirect);
 
     const userLogin = useSelector(state => state.userLogin);
     const { error, loading, userInfo } = userLogin;
@@ -36,8 +34,6 @@ export const LoginScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(login(email, password))
-        console.log("submitted")
-        console.log(email, password);
     }
 
     return (

@@ -7,6 +7,8 @@ import {CartScreen} from "../screens/CartScreen";
 import {LoginScreen} from "../screens/LoginScreen";
 import {RegisterScreen} from "../screens/RegisterScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
+import {UserListScreen} from "../screens/UserListScreen";
+import {UserEditScreen} from "../screens/UserEditScreen";
 
 export const Routing = () => {
     return (
@@ -19,6 +21,12 @@ export const Routing = () => {
                 <Route path="/product/:id" element={<ProductScreen/>}/>
                 <Route path="/cart/:id" element={<CartScreen/>}/>
                 <Route path="/cart" element={<CartScreen/>}/>
+
+                <Route path="/admin/userList" element={<UserListScreen/>}/>
+                <Route path="/admin/user/:id/edit" element={<UserEditScreen/>}/>
+                {/*<Route path="/admin/productList" element={<ProductListScreen/>}/>*/}
+                {/*<Route path="/admin/orderList" element={<OrderListScreen/>}/>*/}
+
                 <Route path="*" element={<Error/>}/>
             </Routes>
     )
