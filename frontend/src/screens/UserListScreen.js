@@ -33,7 +33,7 @@ export const UserListScreen = () => {
         } else {
             navigate('/login')
         }
-    }, [dispatch, navigate, successDelete])
+    }, [dispatch, navigate, successDelete, userInfo])
 
 
     return (
