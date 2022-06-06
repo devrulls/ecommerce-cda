@@ -9,6 +9,7 @@ import {RegisterScreen} from "../screens/RegisterScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
 import {UserListScreen} from "../screens/UserListScreen";
 import {UserEditScreen} from "../screens/UserEditScreen";
+import {ProductListScreen} from "../screens/ProductListScreen";
 
 export const Routing = () => {
     return (
@@ -24,7 +25,7 @@ export const Routing = () => {
 
                 <Route path="/admin/userList" element={<UserListScreen/>}/>
                 <Route path="/admin/user/:id/edit" element={<UserEditScreen/>}/>
-                {/*<Route path="/admin/productList" element={<ProductListScreen/>}/>*/}
+                <Route path="/admin/productList" element={<ProductListScreen/>}/>
                 {/*<Route path="/admin/orderList" element={<OrderListScreen/>}/>*/}
 
                 <Route path="*" element={<Error/>}/>

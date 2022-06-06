@@ -1,44 +1,57 @@
 import React, {useEffect} from "react";
 import {LinkContainer} from "react-router-bootstrap";
-import {Button, Table} from "react-bootstrap";
+import {Button, Col, Row, Table} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Message} from "../components/Message";
 import {Loader} from "../components/Loader";
-import {deleteUsers, listUsers} from "../actions/userActions";
+import {listProducts} from "../actions/productsActions";
 
 
-export const UserListScreen = () => {
+export const ProductListScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const userList = useSelector(state => state.userList);
-    const {error, loading, users} = userList;
+    const productList = useSelector(state => state.productList);
+    const {loading, error, products} = productList;
 
     const userLogin = useSelector(state => state.userLogin);
     const {userInfo} = userLogin;
 
-    const userDelete = useSelector(state => state.userDelete);
-    const {success: successDelete} = userDelete;
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
-            dispatch(deleteUsers(id))
+            // borrar productos
         }
+    }
+    const createProductHandler = (product) => {
+        //creamos el producto
     }
 
     useEffect(() => {
         if (userInfo && userInfo.isAdmin) {
-            dispatch(listUsers())
+            dispatch(listProducts())
         } else {
             navigate('/login')
         }
-    }, [dispatch, navigate, successDelete, userInfo])
+    }, [dispatch, navigate, userInfo])
 
 
     return (
         <div>
-            <h1>Users</h1>
+            <Row className='align-items-center'>
+                <Col md={10}>
+                    <h1>Products</h1>
+                </Col>
+
+                <Col className='text-right'>
+                    <Button className='my-3' onClick={createProductHandler}>
+                        <i className='fas fa-plus'></i>  Create Product
+                    </Button>
+                </Col>
+
+            </Row>
+
             {loading
                 ? <Loader/>
                 : error
@@ -49,30 +62,28 @@ export const UserListScreen = () => {
                             <tr>
                                 <th>ID</th>
                                 <th>NAME</th>
-                                <th>EMAIL</th>
-                                <th>ADMIN</th>
+                                <th>PRICE</th>
+                                <th>CATEGORY</th>
+                                <th>BRAND</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            {users.map(user => (
-                                <tr key={user._id}>
-                                    <td>{user._id}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.isAdmin ? (
-                                        <i className='fa-solid fa-user-check' style={{color: "green"}}></i>
-                                    ) : (
-                                        <i className='fa-solid fa-user' style={{color: "red"}}></i>
-                                    )}</td>
+                            {products.map(product => (
+                                <tr key={product._id}>
+                                    <td>{product._id}</td>
+                                    <td>{product.name}</td>
+                                    <td>€{product.price}</td>
+                                    <td>{product.category}</td>
+                                    <td>{product.brand}</td>
                                     <td>
-                                        <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                                        <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                             <Button variant='light' className='btn-sm'>
                                                 <i className='fa-solid fa-user-pen'></i>
                                             </Button>
                                         </LinkContainer>
                                         <Button variant='danger' className='btn-sm'
-                                                onClick={() => deleteHandler(user._id)}>
+                                                onClick={() => deleteHandler(product._id)}>
                                             <i className='fa-solid fa-user-xmark'></i>
                                         </Button>
                                     </td>
