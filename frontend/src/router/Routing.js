@@ -15,8 +15,9 @@ import {ProductEditScreen} from "../screens/ProductEditScreen";
 export const Routing = () => {
     return (
             <Routes>
-                <Route path="/" element={<Navigate to="/home"/>}/>
-                <Route path="/home" element={<HomeScreen/>}/>
+                {/*<Route path="/" element={<Navigate to="/home"/>}/>*/}
+                {/*<Route path="/home" element={<HomeScreen/>}/>*/}
+                <Route path="/" element={<HomeScreen/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/register" element={<RegisterScreen/>}/>
                 <Route path="/profile" element={<ProfileScreen/>}/>
