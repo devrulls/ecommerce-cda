@@ -6,6 +6,7 @@ import {Product} from "../components/Product";
 import {Loader} from "../components/Loader";
 import {Message} from "../components/Message";
 import {listProducts} from "../actions/productsActions";
+import {useLocation, useNavigate} from "react-router-dom";
 // import axios from "axios";
 
 
@@ -15,6 +16,9 @@ export const HomeScreen = () => {
     const productList = useSelector(state => state.productList)
     const {error, loading, products} = productList
 
+    let keyword = useLocation().search
+    console.log(keyword)
+
     useEffect(() => {
         dispatch(listProducts())
         // async function fetchProducts() {
@@ -23,7 +27,7 @@ export const HomeScreen = () => {
         // }
 
         // fetchProducts()
-    }, []);
+    }, [dispatch, keyword]);
 
     return (
         <div>
