@@ -9,6 +9,8 @@ pillow = "*"
 djangorestframework-simplejwt = "*"
 django = "==3.2"
 djangorestframework = "==3.12.4"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
